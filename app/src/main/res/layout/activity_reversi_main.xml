@@ -30,7 +30,7 @@
             android:layout_height="60dp"
             android:layout_gravity="top"
             android:layout_weight="1"
-            android:src="@drawable/_man" />
+            android:src="@drawable/man" />
 
         <ImageView
             android:id="@+id/OponentPic_RS"
@@ -38,7 +38,7 @@
             android:layout_height="60dp"
             android:layout_gravity="top"
             android:layout_weight="1"
-            android:src="@drawable/_computer" />
+            android:src="@drawable/computer" />
 
     </LinearLayout> //Players pics
 
@@ -347,7 +347,7 @@
             android:layout_height="37dp"
             android:background="#009966"
             android:scaleType="fitXY"
-            android:src="@drawable/white_chess"
+            android:src="@drawable/transparent"
             tools:background="#bda27e" />
 
         <ImageButton
@@ -356,7 +356,7 @@
             android:layout_height="37dp"
             android:background="#00CC99"
             android:scaleType="fitXY"
-            android:src="@drawable/black_chess"
+            android:src="@drawable/transparent"
             tools:background="#F5DEB3" />
 
         <ImageButton
@@ -419,7 +419,7 @@
             android:layout_height="37dp"
             android:background="#00CC99"
             android:scaleType="fitXY"
-            android:src="@drawable/black_chess"
+            android:src="@drawable/transparent"
             tools:background="#F5DEB3" />
 
         <ImageButton
@@ -428,7 +428,7 @@
             android:layout_height="37dp"
             android:background="#009966"
             android:scaleType="fitXY"
-            android:src="@drawable/white_chess"
+            android:src="@drawable/transparent"
             tools:background="#bda27e" />
 
         <ImageButton
