@@ -7,629 +7,716 @@
     tools:context=".ReversiMain"
     android:padding="16dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/play_fun_play_reversi"
+        android:textSize="24sp"
+        android:textColor="#228B22"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"/> //Title
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="5dp"
-            android:layout_weight="3">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="A8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="B8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="C8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="D8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="E8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="F8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="G8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H1" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H3" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H4" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H5" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H6" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H7" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background=""
-                    android:text="H8" />
-            </LinearLayout>
-
-
-        </LinearLayout> //Game Board
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/PlayerPic_RS"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:src="@drawable/_man" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="You: "
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Oponent:"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/OponentPic_RS"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:src="@drawable/_computer" />
 
-        </LinearLayout>
-
-    </LinearLayout>
-
-
+    </LinearLayout> //Players pics
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/PlayerName_RS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="top"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
+            android:width="50dp"
+            android:gravity="top|right"
             android:text="You: "
-            android:textSize="14sp"/>
+            android:textSize="18sp" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:textSize="12sp" />
-        <TextView
+            android:id="@+id/PlayerPointsRS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
+            android:gravity="top"
+            android:text="0 pts"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/OponentName_RS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:width="50dp"
+            android:gravity="top|right"
             android:text="Oponent: "
-            android:textSize="14sp"/>
+            android:textSize="18sp" />
+
         <TextView
+            android:id="@+id/OponentPointsRS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:textSize="12sp"
-            />
-    </LinearLayout>
+            android:layout_weight="1"
+            android:gravity="top"
+            android:text="0 pts"
+            android:textSize="16sp" />
+
+    </LinearLayout> //Players data
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="8"
+        android:columnCount="8"
+        android:layout_gravity="bottom|center">
+
+        <ImageButton
+            android:id="@+id/boardA1"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/boardA2"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/boardA3"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/boardA4"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/boardA5"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/boardA6"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/boardA7"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/boardA8"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/boardB1"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/boardB2"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/boardB3"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board24"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board25"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board26"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board27"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board28"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board31"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board32"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board33"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board34"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board35"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board36"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board37"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board38"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board41"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board42"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board43"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board44"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/white_chess"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board45"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/black_chess"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board46"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board47"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board48"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board51"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board52"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board53"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board54"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/black_chess"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board55"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/white_chess"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board56"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board57"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board58"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board61"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board62"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board63"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board64"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board65"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board66"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board67"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board68"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board71"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board72"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board73"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board74"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board75"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board76"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board77"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board78"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board81"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board82"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board83"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board84"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board85"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board86"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+        <ImageButton
+            android:id="@+id/board87"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#00CC99"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#F5DEB3" />
+
+        <ImageButton
+            android:id="@+id/board88"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:background="#009966"
+            android:scaleType="fitXY"
+            android:src="@drawable/transparent"
+            tools:background="#bda27e" />
+
+
+    </GridLayout> //Game Board
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
         android:orientation="horizontal"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:paddingTop="4dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.9">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restart"
-            android:textSize="12sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/restart"
+            android:textSize="12sp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pass"
-            android:textSize="12sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/leave"
+            android:textSize="12sp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Undo"
-            android:textSize="12sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/pass"
+            android:textSize="12sp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Leave"
-            android:textSize="12sp"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/undo"
+            android:textSize="12sp" />
+
+    </LinearLayout> //Buttons
 
 </LinearLayout>

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Reversi_isreveR</string>
+    <string name="app_name">Reversi</string>
+    <string name="leave">Leave</string>
+    <string name="restart">Restart</string>
+    <string name="pass">Pass</string>
+    <string name="undo">Undo</string>
+    <string name="leave">Leave</string>
+    <string name="play_fun_play_reversi">Have Fun, Play Reversi</string>
 </resources>
