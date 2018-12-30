@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/othello">
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Welcome to Reversi"
         android:textColor="@color/colorPrimaryDark"
@@ -23,37 +23,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="30dp">
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/clean_design">
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:id="@+id/UniplayerBtn"
+            android:layout_gravity="right"
             android:layout_margin="5dp"
-            android:text="1 vs PC" />
+            android:gravity="right|center_vertical"
+            android:text="Uniplayer" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:id="@+id/MultiplayerBtn"
+            android:layout_gravity="right"
             android:layout_margin="5dp"
-            android:text="1 vs 1" />
+            android:gravity="right|center_vertical"
+            android:text="Multiplayer" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:id="@+id/RemoteMultiplayerBtn"
+            android:layout_gravity="right"
             android:layout_margin="5dp"
-            android:text="1 vs Remote" />
+            android:gravity="right|center_vertical"
+            android:text="Remote Multiplayer" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:id="@+id/HistoricBtn"
+            android:layout_gravity="right"
             android:layout_margin="5dp"
+            android:gravity="right|center_vertical"
             android:text="Game History" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:id="@+id/ProfileBtn"
+            android:layout_gravity="right"
             android:layout_margin="5dp"
+            android:gravity="right|center_vertical"
             android:text="Profile" />
-    </LinearLayout>
+    </LinearLayout> // Button menu
 
 </LinearLayout>
