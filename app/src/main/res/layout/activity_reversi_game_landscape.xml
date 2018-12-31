@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 android:width="85dp"
                 android:gravity="center"
-                android:text="Your turn: "
+                android:text="@string/your_turn"
                 android:textSize="16sp" />
             <TextView
                 android:id="@+id/OponentNameTv"
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:width="85dp"
-                android:text="Oponente: "
+                android:text="@string/oponent"
                 android:textSize="16sp" />
         </LinearLayout> //Players names
         
