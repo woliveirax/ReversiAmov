@@ -5,4 +5,15 @@
     <string name="pass">Pass</string>
     <string name="undo">Undo</string>
     <string name="play_fun_play_reversi">Have Fun with Reversi</string>
+    <string name="profile">Profile</string>
+    <string name="player">Player</string>
+    <string name="username">Username</string>
+    <string name="cancel">Cancel</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="save">Save</string>
+
+    <string name="title_activity_camera_handler">CameraHandler</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="UsernameTooSmallError">Username must be bigger than 3 characters</string>
 </resources>
