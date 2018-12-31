@@ -17,6 +17,7 @@ public class Board {
     public JSONArray toJsonArray(){
         JSONArray array = new JSONArray();
 
+
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length;j++){
                 try {
@@ -54,7 +55,13 @@ public class Board {
         }
     }
 
+    public boolean itsRandomTime(){
+        return true; //TODO:
+    }
 
+    private boolean searchRandomPositions(){
+        return true; //TODO:
+    }
 
     //Fill the board
     public void initBoard(){
@@ -80,6 +87,7 @@ public class Board {
 
     }
 
+
     // Verify if the slot is available
     public boolean canFormStraigthLine(int row, int column, CELL_STATUS playerColor) {
         boolean possible = false;
@@ -87,7 +95,7 @@ public class Board {
 
         //Verify if it's empty
         if(board[row][column] != CELL_STATUS.EMPTY) {
-            return possible;
+            return false;
         }
 
         // Scan all directions
@@ -107,7 +115,7 @@ public class Board {
                 if (newRow > -1 && newRow < 8 && newCol > -1 && newCol < 8) {
 
                     // Verify if the color of board[newRow][newCol] is the opposite from the player
-                    CELL_STATUS oppColor = playerColor == CELL_STATUS.IN_BLACK
+                    CELL_STATUS oppColor = (playerColor == CELL_STATUS.IN_BLACK)
                             ? CELL_STATUS.IN_WHITE : CELL_STATUS.IN_BLACK;
 
                     if (board[newRow][newCol] == oppColor) {
@@ -134,9 +142,9 @@ public class Board {
                     }
                 }
 
-                if(possible) {
-                    return possible;
-                }
+//                if(possible) {
+//                    return possible;
+//                }
             }
         }
         return possible;

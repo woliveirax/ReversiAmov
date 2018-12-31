@@ -71,13 +71,15 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     private void getElementAndSetListener(){
         for(int i = 0; i < gridLayout.getChildCount();i++){
-            boardButtons[i%8][i/8]=(ImageButton)gridLayout.getChildAt(i);
-            boardButtons[i%8][i/8].setOnClickListener(this);
+            boardButtons[i/8][i%8]=(ImageButton)gridLayout.getChildAt(i);
+            boardButtons[i/8][i%8].setOnClickListener(this);
         }
     }
 
     @Override
     public void onClick(View v) {
+
+        buttonBlockage();
 
         switch (v.getId()){
             case R.id.RestartBtn:
@@ -93,54 +95,66 @@ public class GameActivity extends Activity implements View.OnClickListener {
             case R.id.PassBtn:
                 //TODO: migrate switch case to gameData and add only gameData.OponentAction();
                 if(!(mode == GAME_TYPE.MULTIPLAYER.getValue()))
-                    gameData.OponentAction();
+                    gameData.oponentAction();
 
-                fillTheBoard(); //To repaint UI
-//                pointsUpdate();
+                updataUI();
+                gameData.skipTurn();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
             case R.id.UndoBtn:
                 //TODO: gameData.restorePreviousState();
-                fillTheBoard(); //To repaint UI
-                //TODO: pointsUpdate();
+                updataUI();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
             default:
-                if(v.getContentDescription() == null)
+                if(v.getContentDescription() == null) //only the the board have content describer
                     return;
 
                 int i = Character.getNumericValue(v.getContentDescription().charAt(0));
                 int j = Character.getNumericValue(v.getContentDescription().charAt(1));
 
                 Toast.makeText(this, i+ "-" +j, Toast.LENGTH_SHORT).show();
-                //if(gameData.setAction(i,j)){
-//                    fillTheBoard(); //To repaint UI
-//                    pointsUpdate();
-                    //TODO: gameDataOponentAction() // oponent moves and the turn is over
-//                    fillTheBoard(); //To repaint UI
-//                    pointsUpdate();
-    //                if(gameData.isGameOver()){
-    //                    //TODO: gameData.saveGame();
-//                        Toast.makeText(this,getString(R.string.victory),Toast.LENGTH_LONG);
-    //                }
-                    //startTurn(); //To start the next turn for the first player, gameData is informed
-                //}
-                /*else{
-                //TODO: unblock listeners
-                certainButtonsBlockage();
-            }*/
+                if(gameData.setAction(i-1,j-1)){
+                    updataUI();
+                    gameData.skipTurn();
+
+                    if(mode != GAME_TYPE.MULTIPLAYER.getValue()){
+                        gameData.oponentAction();
+                        fillTheBoard();
+                        pointsUpdate();
+                        if(gameData.isGameOver()){
+                            //TODO: gameData.saveGame();
+                            Toast.makeText(this,getString(R.string.victory),Toast.LENGTH_LONG);
+                        }
+                        gameData.skipTurn();
+                    }
+                    startTurn(); //To start the next turn for the first player, gameData is informed
+                }
+                else{
+                    certainButtonsBlockage();
+                }
         }
     }
 
+    private void updataUI(){
+        fillTheBoard(); //To repaint UI
+        pointsUpdate();
+    }
+
     private void profilesUpdate(){
-        //playerOneName.setText(gameData.getPlayer1().getname);
-        // playerTwoName.setText(gameData.getPlayerOneName());
-//        blackCount.setText("0 pts");
-//        whiteCount.setText("0 pts");
+//        playerOneName.setText(gameData.getPlayer1().getname);//TODO: retrieve the user name from registry
+//        playerTwoName.setText(gameData.getPlayerOneName()); //TODO: put PC bot or PC AI, if it's single player, and the remote name if it's remote
+        blackCount.setText("0 pts");
+        whiteCount.setText("0 pts");
         //playerOneImg.setImageBitmap(gameData.getPlayerOneBitmap());
         //playerTwoImg.setImageBitmap(gameData.getPlayerTwoBitmap());
     }
 
+    private void buttonBlockage(){
+        gridLayout.setEnabled(false);
+        pass.setEnabled(false);
+        undo.setEnabled(false);
+    }
     private void certainButtonsBlockage(){
         if(!gameData.isBoardAvailable())
             gridLayout.setEnabled(false);//TODO: check if this block the childs
@@ -186,8 +200,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
     }
 
     private void pointsUpdate(){
-        blackCount.setText(gameData.getPlayer1().getPoints()+" pts");
-        whiteCount.setText(gameData.getPlayer2().getPoints() +" pts");
+        blackCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer1().getColor())+" pts");
+        whiteCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer2().getColor()) +" pts");
     }
+
 
 }
