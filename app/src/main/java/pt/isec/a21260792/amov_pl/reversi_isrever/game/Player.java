@@ -8,6 +8,7 @@ public class Player {
     private boolean haveSkipped = false;
     private boolean haveUndone = false;
     CELL_STATUS color;
+    int points;
 
     public Player(CELL_STATUS color) {
         this.color = color;
@@ -31,5 +32,17 @@ public class Player {
 
     public CELL_STATUS getColor() {
         return color;
+    }
+
+    public boolean haveSkipped() {
+        return haveSkipped;
+    }
+
+    public boolean haveUndone() {
+        return haveUndone;
+    }
+
+    public int getPoints() {
+        return points;
     }
 }

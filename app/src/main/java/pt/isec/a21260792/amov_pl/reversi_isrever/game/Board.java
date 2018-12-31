@@ -204,4 +204,6 @@ public class Board {
     public CELL_STATUS[][] getBoard() {
         return board;
     }
+
+    public CELL_STATUS getCellColor(int r, int c){ return board[r][c];}
 }

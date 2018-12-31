@@ -22,24 +22,37 @@ public class GameData {
         board.initBoard();
     }
 
-    public void activateMode(){
-        switch(mode){
-            case MULTIPLAYER:
-                break;
-            case INDIVIDUAL_AI:
-                //boolean movePossible = selectMostPiecesPossiblieAI();
-                break;
-            case INDIVIDUAL_RANDOM:
-                //boolean movePossible =selectRandom();
-                break;
-            case REMOTE_MULTIPLAYER:
-                break;
-            default:
-                break;
-        }
+    public boolean isBoardAvailable(){
+        if( board.noMoreCellsAvailable() || board.noMoreMovesForPlayer(currentPlayer.getColor()))
+            return false;
+        return true;
     }
 
+    public boolean isPassAvailable(){
+        return (turn > 5) && !currentPlayer.haveSkipped();
+    }
 
+    public boolean isUndoAvailable(){
+        return (turn > 5) && !currentPlayer.haveUndone();
+    }
 
+    public CELL_STATUS getCellColor(int row, int column){
+        return board.getCellColor(row, column);
+    }
 
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 }

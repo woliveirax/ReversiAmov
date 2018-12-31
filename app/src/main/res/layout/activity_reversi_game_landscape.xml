@@ -3,40 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".ReversiMain"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:text="@string/play_fun_play_reversi"
-        android:textColor="#228B22"
-        android:textSize="24sp"
-        android:textStyle="bold" /> //Title
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="5dp"/>
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp">
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/play_fun_play_reversi"
+            android:textColor="#228B22"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold" /> //Title
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:gravity="bottom"
             android:orientation="horizontal">
 
             <ImageView
@@ -70,46 +60,46 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="85dp"
-                android:gravity="right|center_vertical"
+                android:gravity="center"
                 android:text="Your turn: "
                 android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/PlayerPointsTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left|center_vertical"
-                android:text="0 pts"
-                android:textSize="16sp" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="10dp"/>
-
             <TextView
                 android:id="@+id/OponentNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|center_vertical"
+                android:gravity="center"
                 android:width="85dp"
                 android:text="Oponente: "
                 android:textSize="16sp" />
+        </LinearLayout> //Players names
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/OponentPointsTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
                 android:text="0 pts"
                 android:textSize="16sp" />
-
-        </LinearLayout> //Players data
-
-    </LinearLayout> //Player identifiers
+            <TextView
+                android:id="@+id/PlayerPointsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0 pts"
+                android:textSize="16sp" />
+            
+        </LinearLayout> //Buttons
+       
+    </LinearLayout> //Title and Player identifiers
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -117,516 +107,516 @@
         android:id="@+id/BoardGl"
         android:rowCount="8"
         android:columnCount="8"
-        android:layout_gravity="bottom|center">
+        android:layout_gravity="center">
 
         <ImageButton
             android:contentDescription="11"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="12"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="13"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="14"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="15"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="16"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="17"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="18"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="21"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="22"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="23"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="24"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="25"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="26"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="27"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="28"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="31"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="32"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="33"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="34"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="35"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="36"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="37"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="38"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="41"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="42"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="43"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="44"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="45"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="46"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="47"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="48"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="51"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="52"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="53"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="54"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="55"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="56"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="57"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="58"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="61"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="62"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="63"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="64"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="65"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="66"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="67"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="68"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="71"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="72"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="73"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="74"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="75"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="76"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="77"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="78"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="81"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="82"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="83"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="84"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="85"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="86"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="87"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#F5DEB3"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
 
         <ImageButton
             android:contentDescription="88"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:background="#bda27e"
             android:scaleType="fitXY"
             android:src="@drawable/transparent" />
@@ -636,42 +626,46 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="20dp">
 
         <Button
+            android:id="@+id/RestartBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/RestartBtn"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/restart"
             android:textSize="12sp" />
 
         <Button
+            android:id="@+id/LeaveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/LeaveBtn"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/leave"
             android:textSize="12sp" />
 
         <Button
+            android:id="@+id/PassBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/PassBtn"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/pass"
             android:textSize="12sp" />
 
         <Button
+            android:id="@+id/UndoBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/UndoBtn"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:text="@string/undo"

@@ -5,4 +5,6 @@
     <string name="pass">Pass</string>
     <string name="undo">Undo</string>
     <string name="play_fun_play_reversi">Have Fun with Reversi</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="maxDifficulty">Maximum Difficulty?</string>
 </resources>

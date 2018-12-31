@@ -24,20 +24,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingTop="10dp"
-        android:paddingRight="20dp"
+        android:paddingRight="31dp"
         android:background="@drawable/clean_design">
 
         <Button
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:id="@+id/UniplayerBtn"
+            android:id="@+id/UniplayerVSBotBtn"
             android:layout_gravity="right"
             android:layout_margin="5dp"
             android:gravity="right|center_vertical"
-            android:text="Uniplayer" />
+            android:text="Single Player vs Bot" />
 
         <Button
-            android:layout_width="120dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/UniplayerVSAIBtn"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:gravity="right|center_vertical"
+            android:text="Single Player vs AI" />
+
+        <Button
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/MultiplayerBtn"
             android:layout_gravity="right"
@@ -46,7 +55,7 @@
             android:text="Multiplayer" />
 
         <Button
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/RemoteMultiplayerBtn"
             android:layout_gravity="right"
@@ -55,7 +64,7 @@
             android:text="Remote Multiplayer" />
 
         <Button
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/HistoricBtn"
             android:layout_gravity="right"
@@ -64,7 +73,7 @@
             android:text="Game History" />
 
         <Button
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/ProfileBtn"
             android:layout_gravity="right"
