@@ -1,6 +1,8 @@
 package pt.isec.a21260792.amov_pl.reversi_isrever.game;
 
-public enum GAME_TYPE {
+import java.io.Serializable;
+
+public enum GAME_TYPE implements Serializable {
     INDIVIDUAL_RANDOM (0),
     INDIVIDUAL_AI (1),
     MULTIPLAYER (2),

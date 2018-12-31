@@ -15,8 +15,8 @@ public class ProfileManager extends Activity {
     public static String PREFERENCES = "MyPreferences";
     public static String USERNAME_FIELD = "USERNAME";
 
-    EditText txt;
-    SharedPreferences sharePrefs;
+    private EditText txt;
+    private SharedPreferences sharePrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,11 @@ public class ProfileManager extends Activity {
 
     public void onLeave(View view) {
         finish();
+    }
+
+    public static String getName(Context context){
+        SharedPreferences pref = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        return pref.getString(USERNAME_FIELD,"Player");
     }
 
     public void onSave(View view) {
