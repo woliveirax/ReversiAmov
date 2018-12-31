@@ -1,5 +1,11 @@
 package pt.isec.a21260792.amov_pl.reversi_isrever.game;
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Board {
 
     private CELL_STATUS[][]board = new CELL_STATUS[8][8];
@@ -7,6 +13,49 @@ public class Board {
     public Board(){
         initBoard();
     }
+
+    public JSONArray toJsonArray(){
+        JSONArray array = new JSONArray();
+
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length;j++){
+                try {
+
+                    JSONObject obj = new JSONObject();
+                    obj.put("x", i);
+                    obj.put("y", j);
+                    obj.put("value",board[i][j].getLevelCode());
+
+                    array.put(obj);
+
+                } catch (JSONException e) {
+                    Log.d("BoardToJSONConversion", "Error trying to create the JSON object");
+                }
+            }
+        }
+
+        return array;
+    }
+
+    public void updateBoard(JSONArray array){
+        for(int i = 0; i < array.length(); i++){
+            try {
+                JSONObject obj = array.getJSONObject(i);
+
+                int x = obj.getInt("x");
+                int y = obj.getInt("y");
+                int value = obj.getInt("value");
+
+                board[x][y] = CELL_STATUS.values()[value];
+
+            } catch (JSONException e) {
+                Log.d("ResultUpdateBoard", "Error trying to update board");
+            }
+        }
+    }
+
+
+
     //Fill the board
     public void initBoard(){
         for (int i = 0; i < 8; i++) {
