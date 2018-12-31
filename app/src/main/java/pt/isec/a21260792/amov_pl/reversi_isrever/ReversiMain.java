@@ -14,6 +14,7 @@ import android.widget.Toast;
 import pt.isec.a21260792.amov_pl.reversi_isrever.game.CELL_STATUS;
 import pt.isec.a21260792.amov_pl.reversi_isrever.game.GAME_TYPE;
 import pt.isec.a21260792.amov_pl.reversi_isrever.game.GameActivity;
+import pt.isec.a21260792.amov_pl.reversi_isrever.game.History;
 
 public class ReversiMain extends Activity {
 
@@ -21,8 +22,6 @@ public class ReversiMain extends Activity {
     private Button singlePlayerVsAI;
     private Button multiplayer;
     private Button remote;
-    private Button history;
-    private Button profile;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -33,27 +32,11 @@ public class ReversiMain extends Activity {
         singlePlayerVsAI = findViewById(R.id.UniplayerVSAIBtn);
         multiplayer = findViewById(R.id.MultiplayerBtn);
         remote = findViewById(R.id.RemoteMultiplayerBtn);
-        history = findViewById(R.id.HistoricBtn);
-        profile = findViewById(R.id.ProfileBtn);
 
         singlePlayerVsBot.setOnClickListener(new GameListener(GAME_TYPE.INDIVIDUAL_RANDOM));
         singlePlayerVsAI.setOnClickListener(new GameListener(GAME_TYPE.INDIVIDUAL_AI));
         multiplayer.setOnClickListener(new GameListener(GAME_TYPE.MULTIPLAYER));
         remote.setOnClickListener(new GameListener(GAME_TYPE.REMOTE_MULTIPLAYER));
-
-        history.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               //do something
-           }
-        });
-
-        profile.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               //do something
-           }
-        });
 
     }
 
@@ -74,6 +57,11 @@ public class ReversiMain extends Activity {
                     }
                 }).create();
         ad.show();
+    }
+
+    public void onHistory(View view) {
+        Intent intent = new Intent(view.getContext(), HistoryActivity.class);
+        startActivity(intent);
     }
 
     class GameListener implements View.OnClickListener{
