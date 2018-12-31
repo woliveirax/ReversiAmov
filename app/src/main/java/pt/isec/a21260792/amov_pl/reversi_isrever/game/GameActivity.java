@@ -12,11 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import pt.isec.a21260792.amov_pl.reversi_isrever.R;
+import pt.isec.a21260792.amov_pl.reversi_isrever.ReversiMain;
 
 public class GameActivity extends Activity implements View.OnClickListener {
 
     private GameData gameData;
-    private GAME_TYPE mode;
+    private int mode;
 
     private Button restart; //TODO: check if we maintain
     private Button leave;
@@ -40,7 +41,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reversi_game);
 
-        //TODO: get in constructor the game mode
+        mode = getIntent().getExtras().getInt("gameMode");
 
         restart =(Button)findViewById(R.id.RestartBtn);
         restart.setOnClickListener(this);
@@ -62,9 +63,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
         gridLayout = (GridLayout) findViewById(R.id.BoardGl);
         getElementAndSetListener();
 
-        //TODO: gameData = new GameData();
+        gameData = new GameData(mode);
+        fillTheBoard(); //To repaint UI
         //TODO: profilesUpdate();
-        //TODO: startTurn();
+        startTurn();
     }
 
     private void getElementAndSetListener(){
@@ -76,41 +78,32 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        //TODO: block listeners
 
         switch (v.getId()){
             case R.id.RestartBtn:
-                //TODO: gameData = new GameData(mode,gameData.getPlayerOne(),gameData.getPlayerTwo());
-                //TODO: gameData.init();//To initiate the board
-//                fillTheBoard(); //To repaint UI
+                gameData = new GameData(mode);//Also initiate the board
+                fillTheBoard(); //To repaint UI
                 //TODO: startGame(); //To start the game for the first player, gameData is informed
                 break;
             case R.id.LeaveBtn:
-                //TODO: create intent and change to previous activity
                 //TODO: if in the remote mode reset communication socket and service
+                Intent myIntent  = new Intent(v.getContext(), ReversiMain.class);
+                startActivityForResult(myIntent, 0);
                 break;
             case R.id.PassBtn:
                 //TODO: migrate switch case to gameData and add only gameData.OponentAction();
-                    switch(mode){
-                        case INDIVIDUAL_RANDOM:
-                            //TODO: gameData.itsRandomTime();
-                            break;
-                        case INDIVIDUAL_AI:
-                            //TODO: gameData.itsAITime();
-                            break;
-                        case REMOTE_MULTIPLAYER:
-                            //TODO: send info to Remote play (throught comm class, gamedata??)
-                            break;
-                    }
-//                fillTheBoard(); //To repaint UI
+                if(!(mode == GAME_TYPE.MULTIPLAYER.getValue()))
+                    gameData.OponentAction();
+
+                fillTheBoard(); //To repaint UI
 //                pointsUpdate();
-                //TODO: startTurn(); //To start the next turn for the first player, gameData is informed
+                startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
             case R.id.UndoBtn:
                 //TODO: gameData.restorePreviousState();
-//                fillTheBoard(); //To repaint UI
+                fillTheBoard(); //To repaint UI
                 //TODO: pointsUpdate();
-                //TODO: startTurn(); //To start the next turn for the first player, gameData is informed
+                startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
             default:
                 if(v.getContentDescription() == null)
@@ -119,13 +112,18 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 int i = Character.getNumericValue(v.getContentDescription().charAt(0));
                 int j = Character.getNumericValue(v.getContentDescription().charAt(1));
 
+                Toast.makeText(this, i+ "-" +j, Toast.LENGTH_SHORT).show();
                 //if(gameData.setAction(i,j)){
 //                    fillTheBoard(); //To repaint UI
 //                    pointsUpdate();
                     //TODO: gameDataOponentAction() // oponent moves and the turn is over
 //                    fillTheBoard(); //To repaint UI
 //                    pointsUpdate();
-                    //TODO: startTurn(); //To start the next turn for the first player, gameData is informed
+    //                if(gameData.isGameOver()){
+    //                    //TODO: gameData.saveGame();
+//                        Toast.makeText(this,getString(R.string.victory),Toast.LENGTH_LONG);
+    //                }
+                    //startTurn(); //To start the next turn for the first player, gameData is informed
                 //}
                 /*else{
                 //TODO: unblock listeners
@@ -145,26 +143,29 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     private void certainButtonsBlockage(){
         if(!gameData.isBoardAvailable())
-            for(int i = 0; i < 8; i++)
-                for(int j = 0; j < 8; j++)
-                    boardButtons[i][j].setEnabled(false);
+            gridLayout.setEnabled(false);//TODO: check if this block the childs
+        else gridLayout.setEnabled(true);//TODO: check if this unblock the childs
 
         if(!gameData.isPassAvailable())
           pass.setEnabled(false);
+        else pass.setEnabled(true);
+
         if(!gameData.isUndoAvailable())
             undo.setEnabled(false);
+        else undo.setEnabled(true);
     }
 
     private void startTurn(){
-//        if(gameData.isGameOver()){
-//            gameData.saveGame();
-//        }
-        //TODO unblock buttons
+        if(gameData.isGameOver()){
+            //TODO: gameData.saveGame();
+            Toast.makeText(this,getString(R.string.lost),Toast.LENGTH_LONG);
+        }
+
         certainButtonsBlockage();
     }
 
     private void startGame(){
-        //TODO: gameData = new GameData();
+        gameData = new GameData(mode);
         startTurn();
     }
 

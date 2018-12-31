@@ -18,6 +18,11 @@ import pt.isec.a21260792.amov_pl.reversi_isrever.game.History;
 
 public class ReversiMain extends Activity {
 
+//    public final static int INDIVIDUAL_RANDOM = 0;
+//    public final static int INDIVIDUAL_AI = 1;
+//    public final static int MULTIPLAYER  = 2;
+//    public final static int REMOTE_MULTIPLAYER = 3;
+
     private Button singlePlayerVsBot;
     private Button singlePlayerVsAI;
     private Button multiplayer;
@@ -74,8 +79,7 @@ public class ReversiMain extends Activity {
         @Override
         public void onClick(View v) {
             Intent myIntent  = new Intent(v.getContext(), GameActivity.class);
-            Bundle b = new Bundle();
-            b.putInt("type of game",type.getValue()); //Your id
+            myIntent.putExtra("gameMode",type.getValue());
             startActivityForResult(myIntent, 0);
         }
     }
