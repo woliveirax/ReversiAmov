@@ -2,6 +2,7 @@ package pt.isec.a21260792.amov_pl.reversi_isrever.game;
 
 import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.ThemedSpinnerAdapter;
 import android.widget.Toast;
 
 public class GameData {
@@ -78,21 +79,18 @@ public class GameData {
     public boolean setAction(int row, int column){
         if(!board.canFormStraigthLine(row,column, currentPlayer.getColor()))
             return false;
-        Log.d("GameActivity","pode estar");
-        board.flip(row,column,currentPlayer.getColor());
+        board.flip(row,column,currentPlayer.getColor(),board.getBoard());
         board.placePiece(row, column, currentPlayer.getColor());
-        String str = "Nº de peças pretas: " + board.countPlayerDisks(CELL_STATUS.IN_BLACK);
-        Log.d("GameActivity",str);
         return true;
     }
 
     public void oponentAction(){
         switch(mode){
             case INDIVIDUAL_RANDOM:
-                board.itsRandomTime();
+                board.itsRandomTime(currentPlayer.getColor());
                 break;
             case INDIVIDUAL_AI:
-                //TODO: gameData.itsAITime();
+                board.itsAITime(currentPlayer.getColor());
                 break;
             case REMOTE_MULTIPLAYER:
                 //TODO: send info to Remote play (throught comm class, gamedata??)

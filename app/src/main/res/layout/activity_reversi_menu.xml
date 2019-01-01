@@ -81,6 +81,15 @@
             android:layout_margin="5dp"
             android:gravity="right|center_vertical"
             android:text="Profile" />
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/CreditsBtn"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:gravity="right|center_vertical"
+            android:text="Credits" />
     </LinearLayout> // Button menu
 
 </LinearLayout>

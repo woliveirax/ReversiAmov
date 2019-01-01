@@ -87,26 +87,29 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 fillTheBoard(); //To repaint UI
                 //TODO: startGame(); //To start the game for the first player, gameData is informed
                 break;
+
             case R.id.LeaveBtn:
                 //TODO: if in the remote mode reset communication socket and service
                 Intent myIntent  = new Intent(v.getContext(), ReversiMain.class);
                 startActivityForResult(myIntent, 0);
                 break;
+
             case R.id.PassBtn:
                 //TODO: migrate switch case to gameData and add only gameData.OponentAction();
                 if(!(mode == GAME_TYPE.MULTIPLAYER.getValue()))
                     gameData.oponentAction();
-
                 updataUI();
                 gameData.skipTurn();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
+
             case R.id.UndoBtn:
                 //TODO: gameData.restorePreviousState();
                 updataUI();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
-            default:
+
+            default: //its the board buttons
                 if(v.getContentDescription() == null) //only the the board have content describer
                     return;
 
@@ -120,13 +123,11 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
                     if(mode != GAME_TYPE.MULTIPLAYER.getValue()){
                         gameData.oponentAction();
-                        fillTheBoard();
-                        pointsUpdate();
+                        updataUI();
                         if(gameData.isGameOver()){
                             //TODO: gameData.saveGame();
                             Toast.makeText(this,getString(R.string.victory),Toast.LENGTH_LONG);
                         }
-                        gameData.skipTurn();
                     }
                     startTurn(); //To start the next turn for the first player, gameData is informed
                 }
@@ -200,8 +201,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
     }
 
     private void pointsUpdate(){
-        blackCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer1().getColor())+" pts");
-        whiteCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer2().getColor()) +" pts");
+        blackCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer1().getColor(),gameData.getBoard().getBoard())+" pts");
+        whiteCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer2().getColor(),gameData.getBoard().getBoard()) +" pts");
     }
 
 
