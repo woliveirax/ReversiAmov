@@ -3,15 +3,12 @@ package pt.isec.a21260792.amov_pl.reversi_isrever;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,11 +18,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import pt.isec.a21260792.amov_pl.reversi_isrever.game.GAME_TYPE;
 import pt.isec.a21260792.amov_pl.reversi_isrever.game.History;
 
 public class HistoryActivity extends Activity {
