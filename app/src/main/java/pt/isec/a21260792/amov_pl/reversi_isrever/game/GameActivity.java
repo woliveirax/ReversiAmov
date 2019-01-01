@@ -66,7 +66,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
         gameData = new GameData(mode, getApplicationContext());
         fillTheBoard(); //To repaint UI
-        profilesUpdate();//TODO:
+        profilesStart();//TODO:
         startTurn();
     }
 
@@ -90,10 +90,15 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
             case R.id.LeaveBtn:
                 //TODO: if in the remote mode reset communication socket and service
-                Intent myIntent  = new Intent(v.getContext(), ReversiMain.class);
-                startActivityForResult(myIntent, 0);
-                break;
-
+                if(mode == GAME_TYPE.MULTIPLAYER.getValue() && gameData.getCurrentPlayer() == 2){
+                    gameData.setMode(GAME_TYPE.INDIVIDUAL_AI);
+                    mode = GAME_TYPE.INDIVIDUAL_AI.getValue();
+                    profilesUpdate();
+                }else{
+                    Intent myIntent  = new Intent(v.getContext(), ReversiMain.class);
+                    startActivityForResult(myIntent, 0);
+                    break;
+                }
             case R.id.PassBtn:
                 if(!(mode == GAME_TYPE.MULTIPLAYER.getValue())){
                     gameData.passUsed();
@@ -148,13 +153,18 @@ public class GameActivity extends Activity implements View.OnClickListener {
         pointsUpdate();
     }
 
-    private void profilesUpdate(){
+    private void profilesStart(){
         playerOneName.setText(gameData.getPlayer1().getName());
         playerTwoName.setText(gameData.getPlayer2().getName());
         blackCount.setText("0 pts");
         whiteCount.setText("0 pts");
         //playerOneImg.setImageBitmap(gameData.getPlayerOneBitmap());
         //playerTwoImg.setImageBitmap(gameData.getPlayerTwoBitmap());
+    }
+
+    private void profilesUpdate(){
+        playerOneName.setText(gameData.getPlayer1().getName());
+        playerTwoName.setText(gameData.getPlayer2().getName());
     }
 
     private void buttonBlockage(){
@@ -211,6 +221,5 @@ public class GameActivity extends Activity implements View.OnClickListener {
         blackCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer1().getColor(),gameData.getBoard().getBoard())+" pts");
         whiteCount.setText(gameData.getBoard().countPlayerDisks(gameData.getPlayer2().getColor(),gameData.getBoard().getBoard()) +" pts");
     }
-
 
 }

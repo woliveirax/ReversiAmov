@@ -85,8 +85,10 @@ public class GameData {
         return turn;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
+    public int getCurrentPlayer() {
+        if(currentPlayer == player1)
+            return 1;
+        return 2;
     }
 
     public Board getBoard() {
@@ -150,5 +152,12 @@ public class GameData {
         int playerTwoPoints = board.countPlayerDisks(CELL_STATUS.IN_WHITE,board.getBoard());
         History game = new History(won,ProfileManager.getName(context),mode,playerOnePoints,playerTwoPoints);
         HistoryActivity.addHistory(game,context);
+    }
+
+    public void setMode(GAME_TYPE mode) {
+        player2.setName("PC_AI");
+        this.mode = mode;
+        switchPlayer();
+
     }
 }
