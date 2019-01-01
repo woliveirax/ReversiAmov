@@ -63,7 +63,7 @@ public class ReversiMain extends Activity {
         singlePlayerVsAI.setOnClickListener(new GameListener(GAME_TYPE.INDIVIDUAL_AI));
         multiplayer.setOnClickListener(new GameListener(GAME_TYPE.MULTIPLAYER));
 
-        remoteClient.setOnClickListener(new View.OnClickListener() {
+/*        remoteClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clientDlg();
@@ -75,7 +75,7 @@ public class ReversiMain extends Activity {
             public void onClick(View v) {
                 server();
             }
-        });
+        });*/
 
         history.setOnClickListener(new View.OnClickListener() {
             @Override

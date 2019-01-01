@@ -8,7 +8,6 @@ public class Player {
     private boolean haveSkipped = false;
     private boolean haveUndone = false;
     private String name = "Player 2";
-
     CELL_STATUS color;
 
     public Player(CELL_STATUS color) {
@@ -33,16 +32,9 @@ public class Player {
         }
     }
 
-    public boolean hasSkipped() {
-        return haveSkipped;
-    }
 
     public void setHaveSkipped(boolean haveSkipped) {
         this.haveSkipped = haveSkipped;
-    }
-
-    public boolean HasUndone() {
-        return haveUndone;
     }
 
     public void setHaveUndone(boolean haveUndone) {
