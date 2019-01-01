@@ -5,6 +5,8 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.ThemedSpinnerAdapter;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 public class GameData {
     private GAME_TYPE mode;
     private Player player1;
@@ -12,13 +14,17 @@ public class GameData {
     private Board board;
     private int turn = 1;
     private Player currentPlayer;
-    //TODO save previous state
+
+    private Board previousBoardBlack;
+    private Board previousBoardWhite;
 
     public void skipTurn() {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
 
-        if(currentPlayer == player1)
+        if(currentPlayer == player1){
             turn ++;
+        }
+
     }
 
     public GameData(int mode){
@@ -27,7 +33,11 @@ public class GameData {
         this.mode = GAME_TYPE.values()[mode];
 
         board = new Board();
+        previousBoardBlack = new Board();
+        previousBoardWhite = new Board();
         board.initBoard();
+        previousBoardBlack.initBoard();
+        previousBoardWhite.initBoard();
         currentPlayer = player1;
     }
 
@@ -45,7 +55,7 @@ public class GameData {
     }
 
     public boolean isPassAvailable(){
-        return (turn > 5) && !currentPlayer.haveSkipped();
+        return (turn > 5) && !currentPlayer.haveSkipped();//TODO: repoor5 turnos
     }
 
     public boolean isUndoAvailable(){
@@ -77,6 +87,12 @@ public class GameData {
     }
 
     public boolean setAction(int row, int column){
+        if(currentPlayer.getColor()==CELL_STATUS.IN_BLACK) {
+            previousBoardBlack.copyBoard(board);
+        } else {
+            previousBoardWhite.copyBoard(board);
+        }
+
         if(!board.canFormStraigthLine(row,column, currentPlayer.getColor()))
             return false;
         board.flip(row,column,currentPlayer.getColor(),board.getBoard());
@@ -87,10 +103,12 @@ public class GameData {
     public void oponentAction(){
         switch(mode){
             case INDIVIDUAL_RANDOM:
-                board.itsRandomTime(currentPlayer.getColor());
+                    board.itsRandomTime(currentPlayer.getColor());
                 break;
             case INDIVIDUAL_AI:
                 board.itsAITime(currentPlayer.getColor());
+                break;
+            case MULTIPLAYER:
                 break;
             case REMOTE_MULTIPLAYER:
                 //TODO: send info to Remote play (throught comm class, gamedata??)
@@ -98,4 +116,26 @@ public class GameData {
         }
         skipTurn();
     }
+
+    public void resetBoard(){
+        if(currentPlayer.getColor()==CELL_STATUS.IN_BLACK){
+            board.copyBoard(previousBoardBlack);
+        } else {
+            board.copyBoard(previousBoardWhite);
+        }
+        undoUsed();
+    }
+
+    public void passUsed(){
+        currentPlayer.setHaveSkipped(true);
+    }
+
+    public void undoUsed(){
+        currentPlayer.setHaveUndone(true);
+    }
+
+    public void returnPlayer(){
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+    }
+
 }

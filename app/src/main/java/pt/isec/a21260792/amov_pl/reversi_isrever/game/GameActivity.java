@@ -3,6 +3,7 @@ package pt.isec.a21260792.amov_pl.reversi_isrever.game;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -62,8 +63,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
         gridLayout = (GridLayout) findViewById(R.id.BoardGl);
         getElementAndSetListener();
+        Log.d("OnCreate_GameActivity","Creating new activity");
 
-        gameData = new GameData(mode);
+                    gameData = new GameData(mode);
         fillTheBoard(); //To repaint UI
         //TODO: profilesUpdate();
         startTurn();
@@ -78,14 +80,13 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
         buttonBlockage();
 
         switch (v.getId()){
             case R.id.RestartBtn:
                 gameData = new GameData(mode);//Also initiate the board
                 fillTheBoard(); //To repaint UI
-                //TODO: startGame(); //To start the game for the first player, gameData is informed
+                startGame(); //To start the game for the first player, gameData is informed
                 break;
 
             case R.id.LeaveBtn:
@@ -95,16 +96,22 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.PassBtn:
-                //TODO: migrate switch case to gameData and add only gameData.OponentAction();
-                if(!(mode == GAME_TYPE.MULTIPLAYER.getValue()))
+                if(!(mode == GAME_TYPE.MULTIPLAYER.getValue())){
+                    gameData.passUsed();
+                    gameData.skipTurn();
                     gameData.oponentAction();
+                }else{
+                    gameData.passUsed();
+                    gameData.skipTurn();
+                }
                 updataUI();
-                gameData.skipTurn();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
 
             case R.id.UndoBtn:
-                //TODO: gameData.restorePreviousState();
+                gameData.resetBoard();
+//                if(mode == GAME_TYPE.MULTIPLAYER.getValue())
+//                    gameData.returnPlayer();
                 updataUI();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
@@ -116,10 +123,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 int i = Character.getNumericValue(v.getContentDescription().charAt(0));
                 int j = Character.getNumericValue(v.getContentDescription().charAt(1));
 
-                Toast.makeText(this, i+ "-" +j, Toast.LENGTH_SHORT).show();
                 if(gameData.setAction(i-1,j-1)){
                     updataUI();
                     gameData.skipTurn();
+                    v.refreshDrawableState();
 
                     if(mode != GAME_TYPE.MULTIPLAYER.getValue()){
                         gameData.oponentAction();
