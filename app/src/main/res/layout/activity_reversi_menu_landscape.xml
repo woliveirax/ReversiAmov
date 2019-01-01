@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/clean_design">
+    android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,80 +14,73 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
         android:text="Welcome to Reversi"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="38sp"
         android:textStyle="bold" /> //Title
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:background="@drawable/clean_design"
+        android:columnCount="2">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_weight="1"
             android:id="@+id/UniplayerVSBotBtn"
-            android:layout_gravity="top"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="Single Player" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_weight="1"
             android:id="@+id/UniplayerVSAIBtn"
-            android:layout_gravity="top"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="Single Player" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_weight="1"
             android:id="@+id/MultiplayerBtn"
-            android:layout_gravity="top"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="Multiplayer" />
 
-    </LinearLayout> // Button menu
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:gravity="center">
-
         <Button
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_weight="1"
             android:id="@+id/RemoteMultiplayerBtn"
-            android:layout_gravity="top"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:text="Remote " />
+            android:text="Remote" />
 
         <Button
             android:id="@+id/HistoricBtn"
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_gravity="top"
-            android:layout_weight="1"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="Game History" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_weight="1"
             android:id="@+id/ProfileBtn"
-            android:layout_gravity="top"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="Profile" />
-    </LinearLayout> // Button menu
+
+        <Button
+            android:id="@+id/CreditsBtn"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Credits" />
+    </GridLayout>
 
 </LinearLayout>

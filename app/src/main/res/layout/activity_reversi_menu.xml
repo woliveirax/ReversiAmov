@@ -22,74 +22,109 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="10dp"
-        android:paddingRight="31dp"
-        android:background="@drawable/clean_design">
+        android:layout_gravity="center"
+        android:background="@drawable/clean_design"
+        android:gravity="center"
+        android:padding="10dp">
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/UniplayerVSBotBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:text="Single Player vs Bot" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/UniplayerVSAIBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:text="Single Player vs AI" />
+            <Button
+                android:id="@+id/UniplayerVSBotBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Single Player vs Bot" />
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/MultiplayerBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:text="Multiplayer" />
+            <Button
+                android:id="@+id/UniplayerVSAIBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Single Player vs AI" />
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/RemoteMultiplayerBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:text="Remote Multiplayer" />
+            <Button
+                android:id="@+id/MultiplayerBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Multiplayer" />
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/HistoricBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:onClick="onHistory"
-            android:text="Game History" />
+            <Button
+                android:id="@+id/HistoricBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:onClick="onHistory"
+                android:text="Game History" />
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/ProfileBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:text="Profile" />
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/CreditsBtn"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:gravity="right|center_vertical"
-            android:text="Credits" />
-    </LinearLayout> // Button menu
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/RemoteServerBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Remote Server" />
+
+            <Button
+                android:id="@+id/RemoteClientBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Remote Client" />
+
+            <Button
+                android:id="@+id/ProfileBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Profile" />
+
+            <Button
+                android:id="@+id/CreditsBtn"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D3D3D3"
+                android:text="Credits" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
