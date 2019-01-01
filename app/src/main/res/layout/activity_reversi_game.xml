@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="85dp"
-                android:gravity="right|center_vertical"
+                android:gravity="center"
                 android:text="@string/your_turn"
                 android:textSize="16sp" />
 
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
                 android:text="0 pts"
                 android:textSize="16sp" />
 
@@ -93,8 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|center_vertical"
                 android:width="85dp"
+                android:gravity="center"
                 android:text="@string/oponent"
                 android:textSize="16sp" />
 
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
                 android:text="0 pts"
                 android:textSize="16sp" />
 

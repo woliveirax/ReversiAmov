@@ -18,15 +18,14 @@ import pt.isec.a21260792.amov_pl.reversi_isrever.game.History;
 
 public class ReversiMain extends Activity {
 
-//    public final static int INDIVIDUAL_RANDOM = 0;
-//    public final static int INDIVIDUAL_AI = 1;
-//    public final static int MULTIPLAYER  = 2;
-//    public final static int REMOTE_MULTIPLAYER = 3;
-
     private Button singlePlayerVsBot;
     private Button singlePlayerVsAI;
     private Button multiplayer;
     private Button remote;
+    private Button profile;
+    private Button history;
+    private Button credits;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,12 +36,36 @@ public class ReversiMain extends Activity {
         singlePlayerVsAI = findViewById(R.id.UniplayerVSAIBtn);
         multiplayer = findViewById(R.id.MultiplayerBtn);
         remote = findViewById(R.id.RemoteMultiplayerBtn);
+        history = findViewById(R.id.HistoricBtn);
+        profile = findViewById(R.id.ProfileBtn);
+        credits = findViewById(R.id.CreditsBtn);
 
         singlePlayerVsBot.setOnClickListener(new GameListener(GAME_TYPE.INDIVIDUAL_RANDOM));
         singlePlayerVsAI.setOnClickListener(new GameListener(GAME_TYPE.INDIVIDUAL_AI));
         multiplayer.setOnClickListener(new GameListener(GAME_TYPE.MULTIPLAYER));
-        remote.setOnClickListener(new GameListener(GAME_TYPE.REMOTE_MULTIPLAYER));
+        //remote.setOnClickListener(new GameListener(GAME_TYPE.REMOTE_MULTIPLAYER));
 
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onHistory(v);
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onProfile(v);
+            }
+        });
+
+        credits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Credits.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void clientDlg() {
@@ -66,6 +89,11 @@ public class ReversiMain extends Activity {
 
     public void onHistory(View view) {
         Intent intent = new Intent(view.getContext(), HistoryActivity.class);
+        startActivity(intent);
+    }
+
+    public void onProfile(View view) {
+        Intent intent = new Intent(view.getContext(), ProfileManager.class);
         startActivity(intent);
     }
 

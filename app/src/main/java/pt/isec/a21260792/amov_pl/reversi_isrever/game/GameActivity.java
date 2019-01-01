@@ -63,11 +63,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
         gridLayout = (GridLayout) findViewById(R.id.BoardGl);
         getElementAndSetListener();
-        Log.d("OnCreate_GameActivity","Creating new activity");
 
-                    gameData = new GameData(mode);
+        gameData = new GameData(mode, getApplicationContext());
         fillTheBoard(); //To repaint UI
-        //TODO: profilesUpdate();
+        profilesUpdate();//TODO:
         startTurn();
     }
 
@@ -84,7 +83,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
         switch (v.getId()){
             case R.id.RestartBtn:
-                gameData = new GameData(mode);//Also initiate the board
+                gameData = new GameData(mode,getApplicationContext());//Also initiate the board
                 fillTheBoard(); //To repaint UI
                 startGame(); //To start the game for the first player, gameData is informed
                 break;
@@ -110,8 +109,6 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
             case R.id.UndoBtn:
                 gameData.resetBoard();
-//                if(mode == GAME_TYPE.MULTIPLAYER.getValue())
-//                    gameData.returnPlayer();
                 updataUI();
                 startTurn(); //To start the next turn for the first player, gameData is informed
                 break;
@@ -132,8 +129,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
                         gameData.oponentAction();
                         updataUI();
                         if(gameData.isGameOver()){
-                            //TODO: gameData.saveGame();
-                            Toast.makeText(this,getString(R.string.victory),Toast.LENGTH_LONG);
+                            gameData.saveGame(true);
+                            buttonBlockage();
+                            Toast.makeText(this,getString(R.string.victory),Toast.LENGTH_LONG).show();
+                            break;
                         }
                     }
                     startTurn(); //To start the next turn for the first player, gameData is informed
@@ -150,8 +149,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
     }
 
     private void profilesUpdate(){
-//        playerOneName.setText(gameData.getPlayer1().getname);//TODO: retrieve the user name from registry
-//        playerTwoName.setText(gameData.getPlayerOneName()); //TODO: put PC bot or PC AI, if it's single player, and the remote name if it's remote
+        playerOneName.setText(gameData.getPlayer1().getName());
+        playerTwoName.setText(gameData.getPlayer2().getName());
         blackCount.setText("0 pts");
         whiteCount.setText("0 pts");
         //playerOneImg.setImageBitmap(gameData.getPlayerOneBitmap());
@@ -163,6 +162,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         pass.setEnabled(false);
         undo.setEnabled(false);
     }
+
     private void certainButtonsBlockage(){
         if(!gameData.isBoardAvailable())
             gridLayout.setEnabled(false);//TODO: check if this block the childs
@@ -179,15 +179,15 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     private void startTurn(){
         if(gameData.isGameOver()){
-            //TODO: gameData.saveGame();
-            Toast.makeText(this,getString(R.string.lost),Toast.LENGTH_LONG);
+            gameData.saveGame(false);
+            Toast.makeText(this,getString(R.string.lost),Toast.LENGTH_LONG).show();
         }
 
         certainButtonsBlockage();
     }
 
     private void startGame(){
-        gameData = new GameData(mode);
+        gameData = new GameData(mode,getApplicationContext());
         startTurn();
     }
 

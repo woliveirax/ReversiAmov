@@ -1,5 +1,6 @@
 package pt.isec.a21260792.amov_pl.reversi_isrever.game;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.ThemedSpinnerAdapter;
@@ -7,7 +8,12 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 
+import pt.isec.a21260792.amov_pl.reversi_isrever.HistoryActivity;
+import pt.isec.a21260792.amov_pl.reversi_isrever.ProfileManager;
+import pt.isec.a21260792.amov_pl.reversi_isrever.R;
+
 public class GameData {
+    private Context context;
     private GAME_TYPE mode;
     private Player player1;
     private Player player2;
@@ -27,10 +33,12 @@ public class GameData {
 
     }
 
-    public GameData(int mode){
-        player1= new Player(CELL_STATUS.IN_BLACK);
-        player2 = new Player(CELL_STATUS.IN_WHITE);
+    public GameData(int mode, Context context){
+        this.context = context;
         this.mode = GAME_TYPE.values()[mode];
+        player1= new Player(CELL_STATUS.IN_BLACK,ProfileManager.getName(context));
+        if(mode != GAME_TYPE.REMOTE_MULTIPLAYER.getValue())
+            player2 = new Player(CELL_STATUS.IN_WHITE,this.mode);
 
         board = new Board();
         previousBoardBlack = new Board();
@@ -49,8 +57,7 @@ public class GameData {
 
     public boolean isGameOver(){
         if(!isBoardAvailable())
-            if(currentPlayer.haveUndone() && currentPlayer.haveSkipped())
-                return true;
+           return true;
         return false;
     }
 
@@ -134,8 +141,14 @@ public class GameData {
         currentPlayer.setHaveUndone(true);
     }
 
-    public void returnPlayer(){
+    public void switchPlayer(){
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
+    public void saveGame(boolean won){
+        int playerOnePoints = board.countPlayerDisks(CELL_STATUS.IN_BLACK,board.getBoard());
+        int playerTwoPoints = board.countPlayerDisks(CELL_STATUS.IN_WHITE,board.getBoard());
+        History game = new History(won,ProfileManager.getName(context),mode,playerOnePoints,playerTwoPoints);
+        HistoryActivity.addHistory(game,context);
+    }
 }

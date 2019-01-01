@@ -17,12 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".game.GameActivity"></activity>
-
+        <activity android:name=".Credits"></activity>
+        <activity android:name=".ProfileManager"></activity>
+        <activity android:name=".HistoryActivity"></activity>
         <service
             android:name=".Networking.ClientHandler"
             android:exported="false" />
 
-        <activity android:name=".HistoryActivity"></activity>
     </application>
 
 </manifest>

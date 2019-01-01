@@ -7,10 +7,30 @@ import java.util.List;
 public class Player {
     private boolean haveSkipped = false;
     private boolean haveUndone = false;
+    private String name = "Player 2";
+
     CELL_STATUS color;
 
     public Player(CELL_STATUS color) {
         this.color = color;
+    }
+
+    public Player(CELL_STATUS color, String name) {
+        this.color = color;
+        this.name = name;
+    }
+
+    public Player(CELL_STATUS color, GAME_TYPE mode) {
+        this.color = color;
+
+        switch (mode){
+            case INDIVIDUAL_AI:
+                name = "PC_AI";
+                break;
+            case INDIVIDUAL_RANDOM:
+                name = "PC_BOT";
+                break;
+        }
     }
 
     public boolean hasSkipped() {
@@ -41,4 +61,7 @@ public class Player {
         return haveUndone;
     }
 
+    public String getName() {
+        return name;
+    }
 }
