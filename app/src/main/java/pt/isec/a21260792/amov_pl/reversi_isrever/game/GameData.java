@@ -1,7 +1,12 @@
 package pt.isec.a21260792.amov_pl.reversi_isrever.game;
 
+import android.util.Log;
+import android.view.accessibility.AccessibilityManager;
+import android.widget.ThemedSpinnerAdapter;
+import android.widget.Toast;
+
 public class GameData {
-    private int mode;
+    private GAME_TYPE mode;
     private Player player1;
     private Player player2;
     private Board board;
@@ -10,33 +15,20 @@ public class GameData {
     //TODO save previous state
 
     public void skipTurn() {
-        if((this.currentPlayer = (this.currentPlayer == player1 ? player2 : player1)) == player1)
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+
+        if(currentPlayer == player1)
             turn ++;
     }
 
     public GameData(int mode){
         player1= new Player(CELL_STATUS.IN_BLACK);
         player2 = new Player(CELL_STATUS.IN_WHITE);
-        this.mode = mode;
+        this.mode = GAME_TYPE.values()[mode];
 
         board = new Board();
         board.initBoard();
         currentPlayer = player1;
-    }
-
-    public void OponentAction(){
-        switch(mode){
-            case 0:// == GAME_TYPE.INDIVIDUAL_RANDOM.getValue()
-                //TODO: gameData.itsRandomTime();
-                break;
-            case 1:// == GAME_TYPE.INDIVIDUAL_AI.getValue()
-                //TODO: gameData.itsAITime();
-                break;
-            case 3:// == GAME_TYPE.REMOTE_MULTIPLAYER.getValue()
-                //TODO: send info to Remote play (throught comm class, gamedata??)
-                break;
-        }
-        skipTurn();
     }
 
     public boolean isBoardAvailable(){
@@ -78,5 +70,32 @@ public class GameData {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public boolean setAction(int row, int column){
+        if(!board.canFormStraigthLine(row,column, currentPlayer.getColor()))
+            return false;
+        board.flip(row,column,currentPlayer.getColor(),board.getBoard());
+        board.placePiece(row, column, currentPlayer.getColor());
+        return true;
+    }
+
+    public void oponentAction(){
+        switch(mode){
+            case INDIVIDUAL_RANDOM:
+                board.itsRandomTime(currentPlayer.getColor());
+                break;
+            case INDIVIDUAL_AI:
+                board.itsAITime(currentPlayer.getColor());
+                break;
+            case REMOTE_MULTIPLAYER:
+                //TODO: send info to Remote play (throught comm class, gamedata??)
+                break;
+        }
+        skipTurn();
     }
 }

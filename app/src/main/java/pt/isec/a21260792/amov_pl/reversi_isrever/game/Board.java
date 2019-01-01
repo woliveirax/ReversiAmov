@@ -6,9 +6,33 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+class Pos{
+    private final int x;
+    private final int y;
+
+    public Pos(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+}
+
 public class Board {
 
-    private CELL_STATUS[][]board = new CELL_STATUS[8][8];
+    private final int BOARDSIZE = 8;
+    private CELL_STATUS[][]board = new CELL_STATUS[BOARDSIZE][BOARDSIZE];
 
     public Board(){
         initBoard();
@@ -16,6 +40,7 @@ public class Board {
 
     public JSONArray toJsonArray(){
         JSONArray array = new JSONArray();
+
 
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length;j++){
@@ -54,12 +79,69 @@ public class Board {
         }
     }
 
+    public void itsRandomTime(CELL_STATUS color){
+        ArrayList<Pos> possiblePos = new ArrayList<>();
+        possiblePos = getValidMoves(possiblePos,color);
 
+        if(noMoreCellsAvailable() || possiblePos.isEmpty()){
+            return;
+        }
+
+        Collections.shuffle(possiblePos);
+        int posX = possiblePos.get(0).getX();
+        int posY = possiblePos.get(0).getY();
+
+        flip(posX,posY,color,board);
+        placePiece(posX,posY,color);
+    }
+
+    public void itsAITime(CELL_STATUS color){
+        int max = 0, pos = 0;
+        ArrayList<Pos> possiblePos = new ArrayList<>();
+        possiblePos = getValidMoves(possiblePos,color);
+
+        if(noMoreCellsAvailable() || possiblePos.isEmpty()){
+            return;
+        }
+
+        CELL_STATUS[][]copy = new CELL_STATUS[BOARDSIZE][BOARDSIZE];
+
+        for(int i = 0; i < possiblePos.size(); i++){
+            copy=boardCopy(copy,board);
+            flip(possiblePos.get(i).getX(),possiblePos.get(i).getY(),color,copy);
+            if(countPlayerDisks(color,copy) > max){
+                max = countPlayerDisks(color,copy);
+                pos = i;
+            }
+        }
+
+        int posX = possiblePos.get(pos).getX();
+        int posY = possiblePos.get(pos).getY();
+
+        flip(posX,posY,color,board);
+        placePiece(posX,posY,color);
+    }
+
+    private CELL_STATUS[][] boardCopy(CELL_STATUS[][]copy_to, CELL_STATUS[][]copy_from){
+        for(int i = 0; i < BOARDSIZE; i++)
+            for(int j = 0; j < BOARDSIZE; j++)
+                copy_to[i][j]=copy_from[i][j];
+        return copy_to;
+    }
+    private ArrayList<Pos> getValidMoves(ArrayList<Pos> array, CELL_STATUS color){
+        for(int i = 0; i < BOARDSIZE; i ++){
+            for (int j = 0; j < BOARDSIZE; j++)
+                if(canFormStraigthLine(i,j,color))
+                    array.add(new Pos(i,j));
+        }
+
+        return array;
+    }
 
     //Fill the board
     public void initBoard(){
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < BOARDSIZE; i++) {
+            for (int j = 0; j < BOARDSIZE; j++) {
                 board[i][j] = CELL_STATUS.EMPTY;
             }
         }
@@ -77,7 +159,6 @@ public class Board {
             else
                 board[row][column] = CELL_STATUS.IN_WHITE;
         }
-
     }
 
     // Verify if the slot is available
@@ -87,7 +168,7 @@ public class Board {
 
         //Verify if it's empty
         if(board[row][column] != CELL_STATUS.EMPTY) {
-            return possible;
+            return false;
         }
 
         // Scan all directions
@@ -104,14 +185,14 @@ public class Board {
                 int newCol = column + dirCol;
 
                 // Check new cell in the board
-                if (newRow > -1 && newRow < 8 && newCol > -1 && newCol < 8) {
+                if (newRow > -1 && newRow < BOARDSIZE && newCol > -1 && newCol < BOARDSIZE) {
 
                     // Verify if the color of board[newRow][newCol] is the opposite from the player
-                    CELL_STATUS oppColor = playerColor == CELL_STATUS.IN_BLACK
+                    CELL_STATUS oppColor = (playerColor == CELL_STATUS.IN_BLACK)
                             ? CELL_STATUS.IN_WHITE : CELL_STATUS.IN_BLACK;
 
                     if (board[newRow][newCol] == oppColor) {
-                        for (int range = 1; range < 8; range++) {//check in all directions
+                        for (int range = 1; range < BOARDSIZE; range++) {//check in all directions
 
                             int nRow = row + range * dirRow;
                             int nCol = column + range * dirCol;
@@ -134,18 +215,17 @@ public class Board {
                     }
                 }
 
-                if(possible) {
-                    return possible;
-                }
+//                if(possible) {
+//                    return possible;
+//                }
             }
         }
         return possible;
     }
 
     // Flip Disks
-    public boolean flip(int currentRow, int currentCol, CELL_STATUS playerColor) {
+    public boolean flip(int currentRow, int currentCol, CELL_STATUS playerColor,CELL_STATUS[][]board) {
         boolean isValid = false;
-        //CELL_STATUS playerColor = player == CURRENTPLAYER.PLAYER1 ? CELL_STATUS.IN_BLACK : CELL_STATUS.IN_WHITE;
 
         // Search all directions
         for(int dirRow = -1; dirRow < 2; dirRow++) {
@@ -167,7 +247,7 @@ public class Board {
                     CELL_STATUS oppoColor =
                             playerColor == CELL_STATUS.IN_WHITE ? CELL_STATUS.IN_BLACK : CELL_STATUS.IN_WHITE;
                     if(board[newRow][newCol] == oppoColor) {
-                        for(int range = 0; range < 8; range++) {
+                        for(int range = 0; range < BOARDSIZE; range++) {
 
                             int nRow = currentRow + range * dirRow;
                             int nCol = currentCol + range * dirCol;
@@ -213,10 +293,10 @@ public class Board {
         return isValid;
     }
 
-    public int countPlayerDisks(CELL_STATUS color){
+    public int countPlayerDisks(CELL_STATUS color, CELL_STATUS[][]board){
         int num = 0;
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 8; col++) {
+        for (int row = 0; row < BOARDSIZE; row++) {
+            for (int col = 0; col < BOARDSIZE; col++) {
                 if(board[row][col] == color) {
                     num++;
                 }
@@ -227,21 +307,20 @@ public class Board {
 
     public boolean noMoreCellsAvailable() {
         int slotsLeft = 0;
-        for(int i = 0; i < 8; i++) {
-            for(int j = 0; j < 8; j++) {
+        for(int i = 0; i < BOARDSIZE; i++) {
+            for(int j = 0; j < BOARDSIZE; j++) {
                 if(board[i][j] == CELL_STATUS.EMPTY) {
                     slotsLeft++;
                 }
             }
         }
-
         return slotsLeft == 0;
     }
 
     public boolean noMoreMovesForPlayer(CELL_STATUS player_color){
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
-                if( !(board[i][j] == CELL_STATUS.EMPTY) )
+        for(int i = 0; i < BOARDSIZE; i++){
+            for(int j = 0; j < BOARDSIZE; j++){
+                if (board[i][j] == CELL_STATUS.EMPTY)
                     if (canFormStraigthLine(i, j, player_color))
                         return false;
             }
